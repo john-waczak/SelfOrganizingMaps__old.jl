@@ -1,0 +1,7 @@
+name = "SelfOrganizingMaps"
+uuid = "d2c1ad73-e15f-430d-9f98-f33e236d6d94"
+authors = ["John Waczak <john.louis.waczak@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

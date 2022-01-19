@@ -99,7 +99,7 @@ X = DataFrame(rand(500, 3), :auto)
 data = Matrix(X)
 
 # Create a function for the  training
-function train!(SOM, df, η₀ = 0.1, σ₀² = 1, λ=0.1, β= 0.1, epochs=10)
+function train!(SOM, df; η₀ = 0.1, σ₀² = 1, λ=0.1, β= 0.1, epochs=10)
     X = Matrix(df)
     η=η₀
     σ²=σ₀²
@@ -130,8 +130,8 @@ SOM ≈ SOM1  # looks like it worked to me!
 # practical example on random colors
 
 # set up SOM grid
-M = 10
-N = 10
+M =50
+N =50
 k = 3
 SOM = rand(M, N, k)
 
@@ -140,14 +140,14 @@ function SOMtoRGB(SOM)
     return SOM_pretty
 end
 
-imshow(SOMtoRGB(SOM))
+#imshow(SOMtoRGB(SOM))
 
 
 im1 = SOMtoRGB(SOM) # save this for before and after
 
 # use random colors to train
-X = DataFrame(rand(3000, 3), :auto)
-train!(SOM, X, 0.1, 1, 0.1, 0.1, 25)
+X = DataFrame(rand(5000, 3), :auto)
+train!(SOM, X; η₀=0.99, σ₀²=10, λ=0.1, β=0.1,  epochs=250)
 
 im2 = SOMtoRGB(SOM)
 
